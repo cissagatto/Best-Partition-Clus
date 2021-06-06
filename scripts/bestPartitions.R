@@ -74,7 +74,7 @@ bestPart <- function(ds, dataset_name, number_folds, folderResults){
     macroF1 = cbind(partition, result)
     allMacroF1Part = rbind(allMacroF1Part, macroF1)
     nome2 = paste("Partition-", i, "-Mean-10-folds-Validation.csv", sep="")
-    #unlink(nome2, recursive = TRUE)
+    unlink(nome2, recursive = TRUE)
     if(interactive()==TRUE){ flush.console() }
     i = i + 1
     gc()
@@ -117,11 +117,40 @@ bestPart <- function(ds, dataset_name, number_folds, folderResults){
     gc()
   }
   
+  result3 = result2[-1,]
+  
   setwd(diretorios$folderResultsDataset)
-  write.csv(result2[-1,], paste(dataset_name, "-best-partitions.csv", sep=""), row.names = FALSE)
+  write.csv(result3, paste(dataset_name, "-best-partitions.csv", sep=""), row.names = FALSE)
   
   setwd(diretorios$folderOutputDataset)
-  write.csv(result2[-1,], paste(dataset_name, "-best-partitions.csv", sep=""), row.names = FALSE)
+  write.csv(result3, paste(dataset_name, "-best-partitions.csv", sep=""), row.names = FALSE)
+  
+  u = 1
+  while(u<=number_folds){
+    cat("\nfold: ", u)
+    
+    result4 = result3[u,]
+    num.part = as.numeric(result4$partition)
+    
+    Folder = paste(diretorios$folderPartitions, "/", dataset_name, sep="")
+    FolderS = paste(Folder, "/Split-", u, sep="")
+    
+    destino = paste(diretorios$folderOutputDataset, "/Split-", u, sep="")
+    if(dir.exists(destino)==FALSE){
+      dir.create(destino)
+    }
+    
+    origem = paste(FolderS, "/Partition-", num.part, sep="")
+    comando = paste("cp -r ", origem, " ", destino, sep="")
+    print(system(comando))
+    
+    origem2 = paste(FolderS, "/fold-", u, "-groups-per-partitions.csv", sep="")
+    comando2 = paste("cp ", origem2, " ", destino, sep="")
+    print(system(comando2))
+    
+    u = u + 1
+    gc()
+  }
   
   retorno$AllMacroF1 = allMacroF1Part[-1,-2]
   retorno$BestPartitions = result2[-1,]
