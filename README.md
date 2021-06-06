@@ -10,9 +10,10 @@ This source code consists of an R project for R Studio and the following R scrip
 
 1. libraries.R
 2. utils.R
-3. bestPartition.R
-4. run.R
-5. silhouete.R
+3. validation.R
+4. bestPartitions.R
+5. run.R
+6. macrof1.R
 
 ## Preparing your experiment
 
@@ -22,10 +23,10 @@ This code is executed in X-fold cross-validation (mandatory!). First, you have t
 <img src="https://github.com/cissagatto/Best-Partition-Silhouete/blob/main/strucuture_bps_datasets.png" width="300">
 
 ### Step-2
-Place a copy of this code in _"C:/Users/[username]/Best-Partition-Silhouete"_ or _"/home/[username]/Best-Partition-Silhouete_. Our files are configured to obtain the paths of the folders from the root project. You can change this in the code if you want.
+Place a copy of this code in _"C:/Users/[username]/Best-Partition-Clus"_ or _"/home/[username]/Best-Partition-Clus_. Our files are configured to obtain the paths of the folders from the root project. You can change this in the code if you want.
 
 ### Step-3
-A file called *datasets-hpmlk.csv* must be in the root project folder. This file is used to read information about the datasets and they are used in the code. All 74 datasets available in cometa (https://cometa.ujaen.es/) are in this file. If you want to use another dataset, please, add the following information about the dataset in the file:
+A file called *datasets.csv* must be in the root project folder. This file is used to read information about the datasets and they are used in the code. All 74 datasets available in cometa (https://cometa.ujaen.es/) are in this file. If you want to use another dataset, please, add the following information about the dataset in the file:
 
 *Id, Name, Domain, Labels, Instances, Attributes, Inputs, Labelsets, Single, Max freq, Card, Dens, MeanIR, Scumble, TCS, AttStart, AttEnd, LabelStart, LabelEnd, xn, yn, gridn*
 
@@ -41,7 +42,7 @@ The results stored in the folder _OUTPUT_ in the code https://github.com/cissaga
 
 NOTE: Please, pay attention to the *datasets-hpmlk.csv* names and the names in the CSV file. They must be the same, on the contrary, an error may occur.
 
-## BPS Folder Strucutre
+## BPC Folder Strucutre
 
 <img src="https://github.com/cissagatto/Best-Partition-Silhouete/blob/main/structure_projet_bps.png" width="300">
 
@@ -72,10 +73,10 @@ The results are store in the folder _RESTULTS_. The results stored in the folder
 <img src="https://github.com/cissagatto/Best-Partition-Silhouete/blob/main/structure_output_bps.png" width="300">
 
 ## RUN
-To run the code, open the terminal, enter */home/[username]/Best-Partition-Silhouete/scripts/* folder, and type:
+To run the code, open the terminal, enter */home/[username]/Best-Partition-Clus/scripts/* folder, and type:
 
 ```
-Rscript silhouete.R [number_dataset] [number_cores] [number_folds] [name_folder_results]
+Rscript macrof1.R [number_dataset] [number_cores] [number_folds] [name_folder_results]
 ```
 
 Where:
@@ -91,10 +92,10 @@ _name_folders_results is the name of the folder to save the results
 All parameters are mandatory. Example:
 
 ```
-Rscript silhouete.R 17 5 10 /dev/shm/results/flags
+Rscript macrof1.R 17 5 10 /dev/shm/results/flags
 ```
 
-This will execute the code for the dataset number 17 in the _dataset-hpmlk.csv_, with 5 cores, 10 folds and the process will be store in the _/dev/shm/results/flags_. This code automatically makes a copy of the */dev/shm/results/flags* in the folder *Results* - which is in the root of the project. In this way, you can run the code using a temporary folder, like *scratch* and *shm*, to speed up the execution.
+This will execute the code for the dataset number 17 in the _dataset.csv_, with 5 cores, 10 folds and the process will be store in the _/dev/shm/results/flags_. This code automatically makes a copy of the */dev/shm/results/flags* in the folder *Results* - which is in the root of the project. In this way, you can run the code using a temporary folder, like *scratch* and *shm*, to speed up the execution.
 
 
 ## Acknowledgment
