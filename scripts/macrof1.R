@@ -48,7 +48,6 @@ options(show.error.messages = TRUE)
 options(scipen=30)
 
 
-
 ##################################################################################################
 # Read the dataset file with the information for each dataset                                    #
 ##################################################################################################
@@ -56,13 +55,11 @@ setwd(FolderRoot)
 datasets <- data.frame(read.csv("datasets.csv"))
 
 
-
 ##################################################################################################
 # ARGS COMMAND LINE                                                                              #
 ##################################################################################################
 cat("\nGet Args")
 args <- commandArgs(TRUE)
-
 
 
 ##################################################################################################
@@ -78,13 +75,11 @@ number_dataset <- as.numeric(args[1])
 cat("\nBPC \t number_dataset: ", number_dataset)
 
 
-
 ##################################################################################################
 # Get the number of cores                                                                        #
 ##################################################################################################
 number_cores <- as.numeric(args[2])
 cat("\nBPC \t cores: ", number_cores)
-
 
 
 ##################################################################################################
@@ -94,13 +89,11 @@ number_folds <- as.numeric(args[3])
 cat("\nBPC \t folds: ", number_folds)
 
 
-
 ##################################################################################################
 # Get the number of folds                                                                        #
 ##################################################################################################
 folderResults <- toString(args[4])
 cat("\nBPC \t  folder: ", folderResults)
-
 
 
 ##################################################################################################
@@ -110,17 +103,15 @@ dataset_name <- toString(ds$Name)
 cat("\nBPC \t nome: ", dataset_name)
 
 
-
 ##################################################################################################
 # DON'T RUN -- it's only for test the code
- ds <- datasets[29,]
- dataset_name = ds$Name
- number_dataset = ds$Id
- number_cores = 10
- number_folds = 10
- folderResults = "/dev/shm/res"
+# ds <- datasets[29,]
+# dataset_name = ds$Name
+# number_dataset = ds$Id
+# number_cores = 10
+# number_folds = 10
+# folderResults = "/dev/shm/res"
 ##################################################################################################
-
 
 
 ##################################################################################################
@@ -129,7 +120,6 @@ cat("\nBPC \t nome: ", dataset_name)
 # origem = paste("cloud:elaine/Datasets/CrossValidation_WithValidation/", dataset_name, sep="")
 # comando = paste("rclone -v copy ", origem, " ", destino, sep="")
 # print(system(comando))
-
 
 
 ##################################################################################################
@@ -154,11 +144,14 @@ diretorios <- directories(dataset_name, folderResults)
 
 
 ##################################################################################################
-#cat("\n Copy partitions from google drive")
-#destino = paste(diretorios$folderPartitions, "/", dataset_name, sep="")
-#origem = paste("cloud:elaine/[2021]ResultadosExperimentos/Generate-Partitions-Random1/", dataset_name, sep="")
-#comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
-#print(system(comando1))
+# cat("\n Copy partitions from google drive")
+# destino = paste(diretorios$folderPartitions, "/", dataset_name, sep="")
+# if(dir.exists(destino)==FALSE){
+#  dir.create(destino)
+# }
+# origem = paste("cloud:elaine/[2021]ResultadosExperimentos/Generate-Partitions-Random1/", dataset_name, sep="")
+# comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
+# print(system(comando1))
 
 
 ##################################################################################################
@@ -169,7 +162,7 @@ timeFinal <- system.time(results <- executeBPC (args[1], number_cores, number_fo
 print(timeFinal)
 
 
-# DONT RUN ONLY FOR TEST
+# DO NOT RUN!!! ONLY FOR TEST
 # timeFinal <- system.time(results <- executeBPC(number_dataset, number_cores, number_folds, folderResults))
 
 
@@ -199,19 +192,19 @@ print(system(str4))
 
 
 ########################################################################################################################
-cat("\n Copy Results to google drive")
-origem = paste(diretorios$folderDatasetResults, "/", dataset_name, "-results-bpc.tar.gz", sep="")
-destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partition-Clus/", dataset_name, sep="")
-comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
-print(system(comando1))
+# cat("\n Copy Results to google drive")
+# origem = paste(diretorios$folderDatasetResults, "/", dataset_name, "-results-bpc.tar.gz", sep="")
+# destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partition-Clus/", dataset_name, sep="")
+# comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
+# print(system(comando1))
 
 
 ########################################################################################################################
-cat("\n Copy Outupt to google drive")
-origem = diretorios$folderOutputDataset
-destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partition-Clus/", dataset_name, sep="")
-comando2 = paste("rclone -v copy ", origem, " ", destino, sep="")
-print(system(comando2))
+# cat("\n Copy Outupt to google drive")
+# origem = diretorios$folderOutputDataset
+# destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partition-Clus/", dataset_name, sep="")
+# comando2 = paste("rclone -v copy ", origem, " ", destino, sep="")
+# print(system(comando2))
 
 
 ##################################################################################################
@@ -221,9 +214,9 @@ print(system(str5))
 
 
 ##################################################################################################
-cat("\nDelete folder output dataset")
-str7 = paste("rm -r ", diretorios$folderOutputDataset, sep="")
-print(system(str7))
+# cat("\nDelete folder output dataset")
+# str7 = paste("rm -r ", diretorios$folderOutputDataset, sep="")
+# print(system(str7))
 
 
 ##################################################################################################
@@ -249,7 +242,7 @@ gc()
 
 
 cat("\n##################################################################################################")
-cat("\n# END OF SELECT BEST PARTITION WITH SILHOUETE. THANKS GOD !!                                     #")
+cat("\n# END OF SELECT BEST PARTITION WITH CLUS. THANKS GOD !!                                          #")
 cat("\n##################################################################################################")
 cat("\n\n\n\n") 
 
