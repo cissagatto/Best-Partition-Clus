@@ -40,7 +40,7 @@ The results stored in the folder _OUTPUT_ in the codes _Generate-Partition-Kohon
 
 <img src="https://github.com/cissagatto/Best-Partition-Clus/blob/main/estrutura_partitions_clus.png" width="300">
 
-NOTE: Please, pay attention to the *datasets-hpmlk.csv* names and the names in the CSV file. They must be the same, on the contrary, an error may occur.
+NOTE: Please, pay attention to the *datasets.csv* names and the names in the CSV file. They must be the same, on the contrary, an error may occur.
 
 ## BPC Folder Strucutre
 
