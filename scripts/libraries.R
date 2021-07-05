@@ -1,5 +1,6 @@
+
 ##################################################################################################
-# Select the best partition with CLUS                                                           #
+# Select the best macro f1 partition                                                             #
 # Copyright (C) 2021                                                                             #
 #                                                                                                #
 # This code is free software: you can redistribute it and/or modify it under the terms of the    #
@@ -29,11 +30,12 @@
 sistema = c(Sys.info())
 FolderRoot = ""
 if (sistema[1] == "Linux"){
-  FolderRoot = paste("/home/", sistema[7], "/Best-Partition-Clus", sep="")
+  FolderRoot = paste("/home/", sistema[7], "/Best-Partition-MacroF1", sep="")
 } else {
-  FolderRoot = paste("C:/Users/", sistema[7], "/Best-Partition-Clus", sep="")
+  FolderRoot = paste("C:/Users/", sistema[7], "/Best-Partition-MacroF1", sep="")
 }
 FolderScripts = paste(FolderRoot, "/scripts", sep="")
+
 
 
 

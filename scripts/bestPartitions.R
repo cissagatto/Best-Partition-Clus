@@ -1,5 +1,5 @@
 ##################################################################################################
-# Select the best partition with CLUS                                                           #
+# Select the best macro f1 partition                                                             #
 # Copyright (C) 2021                                                                             #
 #                                                                                                #
 # This code is free software: you can redistribute it and/or modify it under the terms of the    #
@@ -29,11 +29,12 @@
 sistema = c(Sys.info())
 FolderRoot = ""
 if (sistema[1] == "Linux"){
-  FolderRoot = paste("/home/", sistema[7], "/Best-Partition-Clus", sep="")
+  FolderRoot = paste("/home/", sistema[7], "/Best-Partition-MacroF1", sep="")
 } else {
-  FolderRoot = paste("C:/Users/", sistema[7], "/Best-Partition-Clus", sep="")
+  FolderRoot = paste("C:/Users/", sistema[7], "/Best-Partition-MacroF1", sep="")
 }
 FolderScripts = paste(FolderRoot, "/scripts", sep="")
+
 
 
 
@@ -81,10 +82,10 @@ bestPart <- function(ds, dataset_name, number_folds, folderResults){
   }
   
   setwd(diretorios$folderResultsDataset)
-  write.csv(allMacroF1Part[-2], paste(dataset_name, "-All-Partitions-MacroF1.csv", sep=""), row.names = FALSE)
+  write.csv(allMacroF1Part[-2], paste(dataset_name, "-All-MacroF1-Partitions.csv", sep=""), row.names = FALSE)
   
   setwd(diretorios$folderOutputDataset)
-  write.csv(allMacroF1Part[-2], paste(dataset_name, "-All-Partitions-MacroF1.csv", sep=""), row.names = FALSE)
+  write.csv(allMacroF1Part[-2], paste(dataset_name, "-All-MacroF1-Partitions.csv", sep=""), row.names = FALSE)
   
   # depois escolher a partição com a melhor Macro-F1
   # de P2 até PN, qual obteve a maior Macro-f1 no Fold-x?
@@ -120,10 +121,10 @@ bestPart <- function(ds, dataset_name, number_folds, folderResults){
   result3 = result2[-1,]
   
   setwd(diretorios$folderResultsDataset)
-  write.csv(result3, paste(dataset_name, "-best-partitions.csv", sep=""), row.names = FALSE)
+  write.csv(result3, paste(dataset_name, "-best-macroF1-partitions.csv", sep=""), row.names = FALSE)
   
   setwd(diretorios$folderOutputDataset)
-  write.csv(result3, paste(dataset_name, "-best-partitions.csv", sep=""), row.names = FALSE)
+  write.csv(result3, paste(dataset_name, "-best-macroF1-partitions.csv", sep=""), row.names = FALSE)
   
   u = 1
   while(u<=number_folds){
@@ -144,7 +145,7 @@ bestPart <- function(ds, dataset_name, number_folds, folderResults){
     comando = paste("cp -r ", origem, " ", destino, sep="")
     print(system(comando))
     
-    origem2 = paste(FolderS, "/fold-", u, "-groups-per-partitions.csv", sep="")
+    origem2 = paste(FolderS, "/fold-", u, "-groups-per-partition.csv", sep="")
     comando2 = paste("cp ", origem2, " ", destino, sep="")
     print(system(comando2))
     
@@ -188,7 +189,7 @@ asd <- function(ds, dataset_name, diretorios, namesLabels, folderResults){
   
   # get the best partitions of the dataset
   setwd(diretorios$folderOutputDataset)
-  nome = paste(dataset_name, "-best-partitions.csv", sep="")
+  nome = paste(dataset_name, "-best-macroF1-partitions.csv", sep="")
   bP = data.frame(read.csv(nome))
   
   frequencia = data.frame(count(bP, vars = partition))

@@ -1,5 +1,5 @@
 ##################################################################################################
-# Select the best partition with CLUS                                                           #
+# Select the best macro f1 partition                                                             #
 # Copyright (C) 2021                                                                             #
 #                                                                                                #
 # This code is free software: you can redistribute it and/or modify it under the terms of the    #
@@ -29,11 +29,12 @@
 sistema = c(Sys.info())
 FolderRoot = ""
 if (sistema[1] == "Linux"){
-  FolderRoot = paste("/home/", sistema[7], "/Best-Partition-Clus", sep="")
+  FolderRoot = paste("/home/", sistema[7], "/Best-Partition-MacroF1", sep="")
 } else {
-  FolderRoot = paste("C:/Users/", sistema[7], "/Best-Partition-Clus", sep="")
+  FolderRoot = paste("C:/Users/", sistema[7], "/Best-Partition-MacroF1", sep="")
 }
 FolderScripts = paste(FolderRoot, "/scripts", sep="")
+
 
 
 
@@ -78,9 +79,9 @@ validatePartitions <- function(number_folds, dataset_name, ds, id_part, folderRe
     sistema = c(Sys.info())
     FolderRoot = ""
     if (sistema[1] == "Linux"){
-      FolderRoot = paste("/home/", sistema[7], "/Best-Partition-Clus", sep="")
+      FolderRoot = paste("/home/", sistema[7], "/Best-Partition-MacroF1", sep="")
     } else {
-      FolderRoot = paste("C:/Users/", sistema[7], "/Best-Partition-Clus", sep="")
+      FolderRoot = paste("C:/Users/", sistema[7], "/Best-Partition-MacroF1", sep="")
     }
     FolderScripts = paste(FolderRoot, "/scripts", sep="")
     
@@ -114,11 +115,19 @@ validatePartitions <- function(number_folds, dataset_name, ds, id_part, folderRe
     ####################################################################################
     cat("\n\nGet groups per partitions")
     setwd(FolderS)
-    configP = data.frame(read.csv(paste("fold-", f, "-groups-per-partitions.csv", sep="")))
-    configP2 = configP[,-1]
+    configP = data.frame(read.csv(paste("fold-", f, "-groups-per-partition.csv", sep="")))
+    print(configP)
+    cat("\n\n")
+    #configP2 = configP[,-1]
     t = id_part - 1
-    configP3 = configP2[t,]
+    cat("\n\nT ", t)
+    
+    configP3 = configP[t,]
+    print(configP3)
+    cat("\n\n")
+    
     totalGroupsPart = as.numeric(configP3$num.groups)
+    cat("\n\nTotal grupos ", totalGroupsPart)
     
     ####################################################################################
     nomeTr = paste(dataset_name, "-Split-Tr-", f, ".csv", sep="")
@@ -482,9 +491,19 @@ juntaResultados <- function(number_folds, dataset_name, ds, id_part, folderResul
     cat("\n\nFold: ", f)
     
     FolderSplit = paste(FolderPartition, "/Split-", f, sep="")
+    FolderS = paste(diretorios$folderPartitions, "/", dataset_name, "/Split-", f, sep="")
+    
+    ####################################################################################
+    cat("\n\nGet groups per partitions")
+    setwd(FolderS)
+    configP = data.frame(read.csv(paste("fold-", f, "-groups-per-partition.csv", sep="")))
+    t = id_part - 1
+    configP3 = configP[t,]
+    totalGroupsPart = as.numeric(configP3$num.groups)
+    cat("\n\nTotal grupos ", totalGroupsPart)
     
     g = 1
-    while(g<=id_part){
+    while(g<=totalGroupsPart){
       
       cat("\n\nGroup: ", g)
       
