@@ -204,7 +204,7 @@ print(system(str4))
 ########################################################################################################################
 #cat("\n Copy Results to google drive")
 #origem = paste(diretorios$folderDatasetResults, "/", dataset_name, "-results-bpc.tar.gz", sep="")
-#destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partition-Clus/R2/Macro-F1/", dataset_name, sep="")
+#destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partitions/R1/Macro-F1/", dataset_name, sep="")
 #comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
 #print(system(comando1))
 
@@ -212,7 +212,7 @@ print(system(str4))
 ########################################################################################################################
 #cat("\n Copy Outupt to google drive")
 #origem = diretorios$folderOutputDataset
-#destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partition-Clus/R2/Macro-F1/", dataset_name, sep="")
+#destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partitions/R1/Macro-F1/", dataset_name, sep="")
 #comando2 = paste("rclone -v copy ", origem, " ", destino, sep="")
 #print(system(comando2))
 
