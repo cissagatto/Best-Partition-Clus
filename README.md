@@ -36,7 +36,7 @@ Confirms if the folder UTILS contains the following files: Clus.jar, R_csv_2_arf
 ### Step-5
 The results stored in the folder _OUTPUT_ in the codes _Generate-Partition-Kohonen, or Generate-Partition-Random1, or Generate-Partition-Random2 or Generate-Partition-Jaccard_ will be used here. Copy the folder with the name of the dataset in the folder _PARTITIONS_.
 
-<img src="" width="300">
+<img src="https://github.com/cissagatto/Best-Partition-MacroF1/blob/main/images/Generate-Partitions-BPMaF1.png" width="300">
 
 NOTE: Please, pay attention to the *datasets.csv* names and the names in the CSV file. They must be the same, on the contrary, an error may occur.
 
@@ -44,7 +44,6 @@ NOTE: Please, pay attention to the *datasets.csv* names and the names in the CSV
 
 <img src="https://github.com/cissagatto/Best-Partition-MacroF1/blob/main/images/Folder-Structure-BPMaF1.png" width="300">
 
-<img src="https://github.com/cissagatto/Best-Partition-MacroF1/blob/main/images/Generate-Partitions-BPMaF1.png" width="300">
 
 ## Software Requirements
 This code was develop in *RStudio Version 1.4.1106 © 2009-2021 RStudio, PBC "Tiger Daylily" (2389bc24, 2021-02-11) for Ubuntu Bionic Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.12.8 Chrome/69.0.3497.128 Safari/537.36*. The R Language version was: *R version 4.1.0 (2021-05-18) -- "Camp Pontanezen" Copyright (C) 2021 The R Foundation for Statistical Computing Platform: x86_64-pc-linux-gnu (64-bit)*. 
