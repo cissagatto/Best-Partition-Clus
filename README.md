@@ -1,7 +1,7 @@
 # Best Partition Macro-F1
 This code is part of my PhD research at PPG-CC/DC/UFSCar. The aim is select the best partition for multilabel classification using the Macro-F1 metric.
 
-<img src="" width="500">
+<img src="" width="100">
 
 ## Scripts
 This source code consists of an R project for R Studio and the following R scripts:
