@@ -124,11 +124,11 @@ cat("\nBPC \t nome: ", dataset_name)
 
 
 ##################################################################################################
-cat("\n\nCopy FROM google drive \n")
-destino = paste(FolderRoot, "/datasets/", dataset_name, sep="")
-origem = paste("cloud:elaine/Datasets/CrossValidation_WithValidation/", dataset_name, sep="")
-comando = paste("rclone -v copy ", origem, " ", destino, sep="")
-print(system(comando))
+#cat("\n\nCopy FROM google drive \n")
+#destino = paste(FolderRoot, "/datasets/", dataset_name, sep="")
+#origem = paste("cloud:elaine/Datasets/CrossValidation_WithValidation/", dataset_name, sep="")
+#comando = paste("rclone -v copy ", origem, " ", destino, sep="")
+#print(system(comando))
 
 
 
@@ -154,14 +154,14 @@ diretorios <- directories(dataset_name, folderResults)
 
 
 ##################################################################################################
-cat("\n Copy partitions from google drive")
-destino = paste(diretorios$folderPartitions, "/", dataset_name, sep="")
-if(dir.exists(destino)==FALSE){
-  dir.create(destino)
-}
-origem = paste("cloud:elaine/[2021]ResultadosExperimentos/Generate-Partitions-Random2/", dataset_name, sep="")
-comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
-print(system(comando1))
+#cat("\n Copy partitions from google drive")
+#destino = paste(diretorios$folderPartitions, "/", dataset_name, sep="")
+#if(dir.exists(destino)==FALSE){
+#  dir.create(destino)
+#}
+#origem = paste("cloud:elaine/[2021]ResultadosExperimentos/Generate-Partitions-Random2/", dataset_name, sep="")
+#comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
+#print(system(comando1))
 
 
 ##################################################################################################
@@ -202,43 +202,43 @@ print(system(str4))
 
 
 ########################################################################################################################
-cat("\n Copy Results to google drive")
-origem = paste(diretorios$folderDatasetResults, "/", dataset_name, "-results-bpc.tar.gz", sep="")
-destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partitions/R2/Macro-F1/", dataset_name, sep="")
-comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
-print(system(comando1))
+#cat("\n Copy Results to google drive")
+#origem = paste(diretorios$folderDatasetResults, "/", dataset_name, "-results-bpc.tar.gz", sep="")
+#destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partitions/R2/Macro-F1/", dataset_name, sep="")
+#comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
+#print(system(comando1))
 
 
 ########################################################################################################################
-cat("\n Copy Outupt to google drive")
-origem = diretorios$folderOutputDataset
-destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partitions/R2/Macro-F1/", dataset_name, sep="")
-comando2 = paste("rclone -v copy ", origem, " ", destino, sep="")
-print(system(comando2))
+#cat("\n Copy Outupt to google drive")
+#origem = diretorios$folderOutputDataset
+#destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partitions/R2/Macro-F1/", dataset_name, sep="")
+#comando2 = paste("rclone -v copy ", origem, " ", destino, sep="")
+#print(system(comando2))
 
 
 ##################################################################################################
-cat("\nDelete folder results temporary")
-str5 = paste("rm -r ", diretorios$folderResults, sep="")
-print(system(str5))
+#cat("\nDelete folder results temporary")
+#str5 = paste("rm -r ", diretorios$folderResults, sep="")
+#print(system(str5))
 
 
 ##################################################################################################
-cat("\nDelete folder output dataset")
-str7 = paste("rm -r ", diretorios$folderOutputDataset, sep="")
-print(system(str7))
+#cat("\nDelete folder output dataset")
+#str7 = paste("rm -r ", diretorios$folderOutputDataset, sep="")
+#print(system(str7))
 
 
 ##################################################################################################
-cat("\nDelete folder partitions")
-str6 = paste("rm -r ", diretorios$folderPartitions, "/", dataset_name, sep="")
-print(system(str6))
+#cat("\nDelete folder partitions")
+#str6 = paste("rm -r ", diretorios$folderPartitions, "/", dataset_name, sep="")
+#print(system(str6))
 
 
 ##################################################################################################
-cat("\nDelete folder specific dataset")
-str8 = paste("rm -r ", diretorios$folderSpecificDataset, sep="")
-print(system(str8))
+#cat("\nDelete folder specific dataset")
+#str8 = paste("rm -r ", diretorios$folderSpecificDataset, sep="")
+#print(system(str8))
 
 
 ##################################################################################################
