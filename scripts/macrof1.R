@@ -124,11 +124,17 @@ cat("\nBPC \t nome: ", dataset_name)
 
 
 ##################################################################################################
-#cat("\n\nCopy FROM google drive \n")
-#destino = paste(FolderRoot, "/datasets/", dataset_name, sep="")
-#origem = paste("cloud:elaine/Datasets/CrossValidation_WithValidation/", dataset_name, sep="")
-#comando = paste("rclone -v copy ", origem, " ", destino, sep="")
-#print(system(comando))
+# cat("\n\nCopy FROM google drive \n")
+# destino = paste(FolderRoot, "/datasets/", dataset_name, sep="")
+# origem = paste("cloud:elaine/Datasets/CrossValidation_WithValidation/", dataset_name, sep="")
+# comando = paste("rclone -v copy ", origem, " ", destino, sep="")
+# cat("\n", comando, "\n") 
+# a = print(system(comando))
+# a = as.numeric(a)
+# if(a != 0) {
+# stop("Erro RCLONE")
+# quit("yes")
+# }
 
 
 
@@ -154,14 +160,20 @@ diretorios <- directories(dataset_name, folderResults)
 
 
 ##################################################################################################
-#cat("\n Copy partitions from google drive")
-#destino = paste(diretorios$folderPartitions, "/", dataset_name, sep="")
-#if(dir.exists(destino)==FALSE){
+# cat("\n Copy partitions from google drive")
+# destino = paste(diretorios$folderPartitions, "/", dataset_name, sep="")
+# if(dir.exists(destino)==FALSE){
 #  dir.create(destino)
-#}
-#origem = paste("cloud:elaine/[2021]ResultadosExperimentos/Generate-Partitions-Random2/", dataset_name, sep="")
-#comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
-#print(system(comando1))
+# }
+# origem = paste("cloud:elaine/[2021]ResultadosExperimentos/Generate-Partitions-Random2/", dataset_name, sep="")
+# comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
+# cat("\n", comando1, "\n") 
+# a = print(system(comando1))
+# a = as.numeric(a)
+# if(a != 0) {
+# stop("Erro RCLONE")
+# quit("yes")
+# }
 
 
 ##################################################################################################
@@ -202,19 +214,31 @@ print(system(str4))
 
 
 ########################################################################################################################
-#cat("\n Copy Results to google drive")
-#origem = paste(diretorios$folderDatasetResults, "/", dataset_name, "-results-bpc.tar.gz", sep="")
-#destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partitions/R2/Macro-F1/", dataset_name, sep="")
-#comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
-#print(system(comando1))
+# cat("\n Copy Results to google drive")
+# origem = paste(diretorios$folderDatasetResults, "/", dataset_name, "-results-bpc.tar.gz", sep="")
+# destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partitions/R2/Macro-F1/", dataset_name, sep="")
+# comando1 = paste("rclone -v copy ", origem, " ", destino, sep="")
+# cat("\n", comando1, "\n") 
+# a = print(system(comando1))
+# a = as.numeric(a)
+# if(a != 0) {
+# stop("Erro RCLONE")
+# quit("yes")
+# }
 
 
 ########################################################################################################################
-#cat("\n Copy Outupt to google drive")
-#origem = diretorios$folderOutputDataset
-#destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partitions/R2/Macro-F1/", dataset_name, sep="")
-#comando2 = paste("rclone -v copy ", origem, " ", destino, sep="")
-#print(system(comando2))
+# cat("\n Copy Outupt to google drive")
+# origem = diretorios$folderOutputDataset
+# destino = paste("cloud:elaine/[2021]ResultadosExperimentos/Best-Partitions/R2/Macro-F1/", dataset_name, sep="")
+# comando2 = paste("rclone -v copy ", origem, " ", destino, sep="")
+# cat("\n", comando2, "\n") 
+# a = print(system(comando2))
+# a = as.numeric(a)
+# if(a != 0) {
+# stop("Erro RCLONE")
+# quit("yes")
+# }
 
 
 ##################################################################################################
