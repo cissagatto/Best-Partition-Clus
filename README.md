@@ -5,7 +5,7 @@ This code is part of my PhD research at PPG-CC/DC/UFSCar. The aim is select the 
 
 
 ## How to cite 
-@misc{Gatto2021, author = {Gatto, E. C.}, title = {Best-Partition-MacroF1}, year = {2021}, publisher = {GitHub}, journal = {GitHub repository}, howpublished = {\url{https://github.com/cissagatto/Best-Partition-MacroF1/}}}
+@misc{Gatto2021, author = {Gatto, E. C.}, title = {Select Best Partition with MacroF1}, year = {2021}, publisher = {GitHub}, journal = {GitHub repository}, howpublished = {\url{https://github.com/cissagatto/Best-Partition-MacroF1/}}}
 
 ## Scripts
 This source code consists of an R project for R Studio and the following R scripts:
