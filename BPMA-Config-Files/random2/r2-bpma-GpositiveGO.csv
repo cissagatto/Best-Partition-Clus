@@ -1,0 +1,9 @@
+Config, Value
+Dataset_Path, ~/Best-Partition-MaF1-Clus/Datasets
+Temporary_Path, /dev/shm/r2-bpmi-GpositiveGO
+Partitions_Path, ~/Best-Partition-MaF1-Clus/Partitions/random2
+similarity, random2
+dataset_name, GpositiveGO
+number_dataset, 42
+number_folds, 10
+number_cores, 1

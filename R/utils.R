@@ -1,54 +1,43 @@
-
-##################################################################################################
-# Select the best macro f1 partition                                                             #
-# Copyright (C) 2021                                                                             #
-#                                                                                                #
-# This code is free software: you can redistribute it and/or modify it under the terms of the    #
-# GNU General Public License as published by the Free Software Foundation, either version 3 of   #
-# the License, or (at your option) any later version. This code is distributed in the hope       #
-# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of         #
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for    #
-# more details.                                                                                  #
-#                                                                                                #
-# Elaine Cecilia Gatto | Prof. Dr. Ricardo Cerri | Prof. Dr. Mauri Ferrandin                     #
-# Federal University of Sao Carlos (UFSCar: https://www2.ufscar.br/) Campus Sao Carlos           #
-# Computer Department (DC: https://site.dc.ufscar.br/)                                           #
-# Program of Post Graduation in Computer Science (PPG-CC: http://ppgcc.dc.ufscar.br/)            #
-# Bioinformatics and Machine Learning Group (BIOMAL: http://www.biomal.ufscar.br/)               #
-#                                                                                                #
-##################################################################################################
-
-
-##################################################################################################
-# Script 
-##################################################################################################
+##############################################################################
+# BEST PARTITION MACRO-F1 CLUS                                               #
+# Copyright (C) 2021                                                         #
+#                                                                            #
+# This code is free software: you can redistribute it and/or modify it under #
+# the terms of the GNU General Public License as published by the Free       #
+# Software Foundation, either version 3 of the License, or (at your option)  #
+# any later version. This code is distributed in the hope that it will be    #
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of     #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General   #
+# Public License for more details.                                           #
+#                                                                            #
+# Elaine Cecilia Gatto | Prof. Dr. Ricardo Cerri | Prof. Dr. Mauri           #
+# Ferrandin | Federal University of Sao Carlos                               #
+# (UFSCar: https://www2.ufscar.br/) Campus Sao Carlos | Computer Department  #
+# (DC: https://site.dc.ufscar.br/) | Program of Post Graduation in Computer  #
+# Science (PPG-CC: http://ppgcc.dc.ufscar.br/) | Bioinformatics and Machine  #
+# Learning Group (BIOMAL: http://www.biomal.ufscar.br/)                      #
+#                                                                            #
+##############################################################################
 
 
-##################################################################################################
-# Configures the workspace according to the operating system                                     #
-##################################################################################################
-sistema = c(Sys.info())
-FolderRoot = ""
-if (sistema[1] == "Linux"){
-  FolderRoot = paste("/home/", sistema[7], "/Best-Partition-MacroF1", sep="")
-} else {
-  FolderRoot = paste("C:/Users/", sistema[7], "/Best-Partition-MacroF1", sep="")
-}
-FolderScripts = paste(FolderRoot, "/scripts", sep="")
+###########################################################################
+#
+###########################################################################
+FolderRoot = "~/Best-Partition-MaF1-Clus"
+FolderScripts = "~/Best-Partition-MaF1-Clus/R"
 
-
-
-##################################################################################################
-# FUNCTION DIRECTORIES                                                                           #
-#   Objective:                                                                                   #
-#      Creates all the necessary folders for the project.                                        #  
-#   Parameters:                                                                                  #
-#      dataset_name: name of the dataset                                                         #
-#      folderResults: path to save process the algorithm. Example: "/dev/shm/birds",             # 
-#                     "/scratch/birds", "/home/usuario/birds", "/C:/Users/usuario/birds"         #
-#   Return:                                                                                      #
-#      All path directories                                                                      #
-##################################################################################################
+#########################################################################
+# FUNCTION DIRECTORIES                                   
+#   Objective:                                           
+#      Creates all the necessary folders for the project.
+#   Parameters:                                          
+#      dataset_name: name of the dataset                 
+#      folderResults: path to save process the algorithm. 
+#               Example: "/dev/shm/birds", "/scratch/birds", 
+#            "/home/usuario/birds", "/C:/Users/usuario/birds"
+#   Return:                                                              
+#      All path directories                                              
+#########################################################################
 directories <- function(dataset_name, folderResults){
   
   retorno = list()
@@ -78,7 +67,7 @@ directories <- function(dataset_name, folderResults){
   # in ARFF files correctly.                                                  #
   # "/home/[user]/Partitions-Kohonen/utils"                                   #
   #############################################################################
-  folderUtils = paste(FolderRoot, "/utils", sep="")
+  folderUtils = paste(FolderRoot, "/Utils", sep="")
   if(dir.exists(folderUtils) == TRUE){
     setwd(folderUtils)
     dir_folderUtils = dir(folderUtils)
@@ -99,7 +88,7 @@ directories <- function(dataset_name, folderResults){
   # compute silhouete to choose the best hybrid partition.                    #
   # "/home/[user]/Partitions-Kohonen/datasets"                                #
   #############################################################################
-  folderDatasets = paste(FolderRoot, "/datasets", sep="")
+  folderDatasets = paste(folderResults, "/Datasets", sep="")
   if(dir.exists(folderDatasets) == TRUE){
     setwd(folderDatasets)
     dir_folderDatasets = dir(folderDatasets)
@@ -167,8 +156,8 @@ directories <- function(dataset_name, folderResults){
   } else {
     dir.create(folderNamesLabels)
     setwd(folderNamesLabels)
-    dir_folderLabelSpace = dir(folderNamesLabels)
-    n_folderLabelSpace = length(dir_folderLabelSpace)
+    dir_folderNamesLabels = dir(folderNamesLabels)
+    n_folderNamesLabels = length(dir_folderNamesLabels)
   }
   
   
@@ -268,7 +257,7 @@ directories <- function(dataset_name, folderResults){
   # Folder to store the results from partitioning the label correlations      #
   # "/dev/shm/res/birds/Partitions"                                           #
   #############################################################################
-  folderPartitions = paste(FolderRoot, "/Partitions", sep="")
+  folderPartitions = paste(folderResults, "/Partitions", sep="")
   if(dir.exists(folderPartitions) == TRUE){
     setwd(folderPartitions)
     dir_folderPartitions = dir(folderPartitions)
@@ -280,26 +269,6 @@ directories <- function(dataset_name, folderResults){
     n_folderPartitions = length(dir_folderPartitions)
   }
   
-  
-  #############################################################################
-  # DATASET RESULTS FOLDER:                                                   #
-  # Folder to store all results from this code in the ROOT FOLDER             #
-  # The folder RESULTS created before can be anywhere you want, and it will   #
-  # be delete in the end of the execution of this code. So, this folder here  # 
-  # is meant to store definitely the results to be used after to analyse.     # 
-  # "/home/[user]/Partitions-Kohonen/Results"                                 #
-  #############################################################################
-  folderDatasetResults = paste(FolderRoot, "/Results", sep="")
-  if(dir.exists(folderDatasetResults) == TRUE){
-    setwd(folderDatasetResults)
-    dir_folderDatasetResults = dir(folderDatasetResults)
-    n_folderDatasetResults = length(dir_folderDatasetResults)
-  } else {
-    dir.create(folderDatasetResults)
-    setwd(folderDatasetResults)
-    dir_folderDatasetResults = dir(folderDatasetResults)
-    n_folderDatasetResults = length(dir_folderDatasetResults)
-  }
   
   
   #############################################################################
@@ -353,7 +322,6 @@ directories <- function(dataset_name, folderResults){
   retorno$folderCVTS = folderCVTS
   retorno$folderCVVL = folderCVVL
   retorno$folderPartitions = folderPartitions
-  retorno$folderDatasetResults = folderDatasetResults
   retorno$folderOutput = folderOutput
   retorno$folderOutputDataset = folderOutputDataset
   retorno$folderResultsDataset = folderResultsDataset
@@ -373,7 +341,6 @@ directories <- function(dataset_name, folderResults){
   retorno$dir_folderCVTS = dir_folderCVTS
   retorno$dir_folderCVVL = dir_folderCVVL
   retorno$dir_folderPartitions = dir_folderPartitions
-  retorno$dir_folderDatasetResults = dir_folderDatasetResults
   retorno$dir_folderOutput = dir_folderOutput
   retorno$dir_folderOutputDataset = dir_folderOutputDataset
   retorno$dir_folderResultsDataset = dir_folderResultsDataset
@@ -393,7 +360,6 @@ directories <- function(dataset_name, folderResults){
   retorno$n_folderCVTS = n_folderCVTS
   retorno$n_folderCVVL = n_folderCVVL
   retorno$n_folderPartitions = n_folderPartitions
-  retorno$n_folderDatasetResults = n_folderDatasetResults
   retorno$n_folderOutput = n_folderOutput
   retorno$n_folderOutputDataset = n_folderOutputDataset
   retorno$n_folderResultsDataset = n_folderResultsDataset
@@ -404,19 +370,19 @@ directories <- function(dataset_name, folderResults){
 
 
 
-##################################################################################################
-# FUNCTION LABEL SPACE                                                                           #
-#   Objective                                                                                    #
-#       Separates the label space from the rest of the data to be used as input for              # 
-#       calculating correlations                                                                 #                                                                                        
-#   Parameters                                                                                   #
-#       ds: specific dataset information                                                         #
-#       dataset_name: dataset name. It is used to save files.                                    #
-#       number_folds: number of folds created                                                    #
-#       folderResults: folder where to save results                                              #
-#   Return:                                                                                      #
-#       Training set labels space                                                                #
-##################################################################################################
+###########################################################################
+# FUNCTION LABEL SPACE                                                  
+#   Objective                                                           
+#       Separates the label space from the rest of the data to be used
+#      as input for calculating correlations                          
+#   Parameters                                                        
+#       ds: specific dataset information
+#       dataset_name: dataset name. It is used to save files.
+#       number_folds: number of folds created                
+#       folderResults: folder where to save results          
+#   Return:                                                  
+#       Training set labels space                            
+#######################################################################
 labelSpace <- function(ds, dataset_name, number_folds, folderResults){
   
   retorno = list()
@@ -462,22 +428,22 @@ labelSpace <- function(ds, dataset_name, number_folds, folderResults){
   return(retorno)
   
   gc()
-  cat("\n##################################################################################################")
-  cat("\n# FUNCTION LABEL SPACE: END                                                                      #") 
-  cat("\n##################################################################################################")
+  cat("\n##########################################################")
+  cat("\n# FUNCTION LABEL SPACE: END                              #") 
+  cat("\n##########################################################")
   cat("\n\n\n\n")
 }
 
 
-################################################################################################
-# FUNCTION INFO DATA SET                                                                       #
-#  Objective                                                                                   #
-#     Gets the information that is in the "datasets-hpmlk.csv" file.                           #  
-#  Parameters                                                                                  #
-#     dataset: the specific dataset                                                            #
-#  Return                                                                                      #
-#     Everything in the "datasets-hpmlk.csv" file.                                             #                    
-################################################################################################
+#######################################################################
+# FUNCTION INFO DATA SET                                               
+#  Objective                                                           
+#     Gets the information that is in the "datasets-hpmlk.csv" file.   
+#  Parameters                                                          
+#     dataset: the specific dataset                                    
+#  Return                                                              
+#     Everything in the "datasets-hpmlk.csv" file.                     
+#######################################################################
 infoDataSet <- function(dataset){
   
   retorno = list()
@@ -510,7 +476,9 @@ infoDataSet <- function(dataset){
 }
 
 
-##################################################################################################
-# Please, any errors, contact us: elainececiliagatto@gmail.com                                   #
-# Thank you very much!                                                                           #
-##################################################################################################
+
+
+###########################################################################
+# Please, any errors, contact us: elainececiliagatto@gmail.com            #
+# Thank you very much!                                                    #
+###########################################################################
