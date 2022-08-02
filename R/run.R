@@ -28,7 +28,6 @@ FolderScripts = "~/Best-Partition-MaF1-Clus/R"
 
 
 
-
 ###############################################################################
 # Runs for all datasets listed in the "datasets.csv" file         
 # n_dataset: number of the dataset in the "datasets.csv"          
@@ -36,7 +35,7 @@ FolderScripts = "~/Best-Partition-MaF1-Clus/R"
 # number_folds: number of folds for cross validation              
 # delete: if you want, or not, to delete all folders and files generated
 ########################################################################
-executeBPMA <- function(ds,
+executaBPMA <- function(ds,
                         dataset_name,
                         number_dataset, 
                         number_cores, 

@@ -23,8 +23,8 @@
 ###########################################################################
 #
 ###########################################################################
-FolderRoot = "~/Best-Partition-MiF1-Clus"
-FolderScripts = "~/Best-Partition-MiF1-Clus/R"
+FolderRoot = "~/Best-Partition-MaF1-Clus"
+FolderScripts = "~/Best-Partition-MaF1-Clus/R"
 
 
 
