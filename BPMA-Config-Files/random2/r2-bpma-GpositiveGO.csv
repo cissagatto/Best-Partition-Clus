@@ -1,6 +1,6 @@
 Config, Value
 Dataset_Path, ~/Best-Partition-MaF1-Clus/Datasets
-Temporary_Path, /dev/shm/r2-bpmi-GpositiveGO
+Temporary_Path, /dev/shm/r2-bpma-GpositiveGO
 Partitions_Path, ~/Best-Partition-MaF1-Clus/Partitions/random2
 similarity, random2
 dataset_name, GpositiveGO

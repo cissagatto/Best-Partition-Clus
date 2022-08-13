@@ -1,6 +1,6 @@
 Config, Value
 Dataset_Path, ~/Best-Partition-MaF1-Clus/Datasets
-Temporary_Path, /dev/shm/j-bpmi-GpositiveGO
+Temporary_Path, /dev/shm/j-bpma-GpositiveGO
 Partitions_Path, ~/Best-Partition-MaF1-Clus/Partitions/jaccard
 similarity, jaccard
 dataset_name, GpositiveGO
