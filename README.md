@@ -58,7 +58,18 @@ A file called _datasets-original.csv_ must be in the *root project folder*. This
 To run this experiment you need the _X-Fold Cross-Validation_ files and they must be compacted in **tar.gz** format. You can download these files, with 10-folds, ready for multiple multilabel dataset by clicking [here](https://www.4shared.com/folder/ypgzwzjq/datasets-cross-validation.html). For a new dataset, in addition to including it in the **datasets-original.csv** file, you must also run this code [here](https://github.com/cissagatto/crossvalidationmultilabel). In the repository in question you will find all the instructions needed to generate the files in the format required for this experiment. The **tar.gz** file can be placed on any folder on your computer or cluster. The absolute path of the file should be passed as a parameter in the configuration file that will be read by **exhaustive.R** script. The dataset will be loaded from there.
 
 ### STEP 3
-You need to have installed all the R packages required to execute this code on your machine. Check out which are needed in the file *libraries.R*. This code does not provide any type of automatic package installation!
+You need to have installed all the R packages required to execute this code on your machine. Check out which are needed in the file *libraries.R*. This code does not provide any type of automatic package installation! You can use the Conda environment that I created to perform this experiment. Below are the links to download the files.
+
+| [download txt](https://www.4shared.com/s/fUCVTl13zea) | [download yml](https://www.4shared.com/s/f8nOZyxj9iq) | [download yaml](https://www.4shared.com/s/fk5Io4faLiq) |
+
+Try to use the command below to extract the environment to your computer:
+
+```
+conda env create -file AmbienteTeste.yaml
+```
+
+See more information about Conda environments [here](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) 
+
 
 ### STEP 4
 You will need the previously generated partitions by one of the following codes:
@@ -70,18 +81,8 @@ You will need the previously generated partitions by one of the following codes:
 
 You must use the results generated from the *OUTPUT* folder in those source code. They must be compressed into a *TAR.GZ* file and placed in a folder on your computer. The absolute path of this folder must be passed as a parameter in the configuration file. Please see the example in the PARTITIONS folder in this source code.
 
-### STEP 5
-You can use the Conda environment that I created to perform this experiment. Below are the links to download the files.
-
-| [download txt](https://www.4shared.com/s/fUCVTl13zea) | [download yml](https://www.4shared.com/s/f8nOZyxj9iq) | [download yaml](https://www.4shared.com/s/fk5Io4faLiq) |
-
-Try to use the command below to extract the environment to your computer:
-
-```
-conda env create -file AmbienteTeste.yaml
-```
-
-See more information about Conda environments [here](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) 
+## STEP 5
+Confirms if the folder *Utils* contains the following files: *Clus.jar*, *R_csv_2_arff.jar*, and *weka.jar*, and also the folder *lib* with *commons-math-1.0.jar*, *jgap.jar*, *weka.jar* and *Clus.jar.* Without these jars, the code not runs. 
 
 ### STEP 6
 To run this code you will need a configuration file saved in *csv* format and with the following information:
