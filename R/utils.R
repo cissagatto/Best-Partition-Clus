@@ -38,9 +38,12 @@ FolderScripts = "~/Best-Partition-MaF1-Clus/R"
 #   Return:                                                              
 #      All path directories                                              
 #########################################################################
-directories <- function(dataset_name, folderResults){
+directories <- function(dataset_name, folderResults, similarity){
   
   retorno = list()
+
+  FolderRoot = "~/Best-Partition-MaF1-Clus"
+FolderScripts = "~/Best-Partition-MaF1-Clus/R"
   
   #############################################################################
   # RESULTS FOLDER:                                                           #
@@ -290,6 +293,23 @@ directories <- function(dataset_name, folderResults){
     dir_folderOutput = dir(folderOutput)
     n_folderOutput = length(dir_folderOutput)
   }
+
+
+  
+  folderOS = paste(folderOutput, "/", similarity, sep="")
+  if(dir.exists(folderOS) == TRUE){
+    setwd(folderOS)
+    dir_folderOS = dir(folderOS)
+    n_folderOS = length(dir_folderOS)
+  } else {
+    dir.create(folderOS)
+    setwd(folderOS)
+    dir_folderOS = dir(folderOS)
+    n_folderOS = length(dir_folderOS)
+  }
+
+
+
   
   #############################################################################
   # OUTPUT DATASET FOLDER:                                                    #
