@@ -38,11 +38,12 @@ bestPart <- function(ds,
                      number_dataset, 
                      number_cores, 
                      number_folds, 
-                     folderResults){
+                     folderResults, 
+                     similarity){
   
   retorno = list()
   
-  diretorios = directories(dataset_name, folderResults)
+  diretorios = directories(dataset_name, folderResults, similarity)
   
   partition = c(0)
   measures = c("")
@@ -190,9 +191,10 @@ asd <- function(ds,
                 number_dataset, 
                 number_cores, 
                 number_folds, 
-                folderResults){
+                folderResults,
+                similasrity){
   
-  diretorios = directories(dataset_name, folderResults)
+  diretorios = directories(dataset_name, folderResults, similarity)
   
   # function return 
   retorno = list()

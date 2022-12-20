@@ -43,7 +43,7 @@ directories <- function(dataset_name, folderResults, similarity){
   retorno = list()
 
   FolderRoot = "~/Best-Partition-MaF1-Clus"
-FolderScripts = "~/Best-Partition-MaF1-Clus/R"
+  FolderScripts = "~/Best-Partition-MaF1-Clus/R"
   
   #############################################################################
   # RESULTS FOLDER:                                                           #
