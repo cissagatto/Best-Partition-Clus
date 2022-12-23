@@ -312,7 +312,7 @@ cat("\n####################################################################")
 cat("\n# COPY OUTPUT TO GOOGLE DRIVE                                      #")
 cat("\n####################################################################\n\n")
 origem = diretorios$folderOutputDataset
-destino = paste("nuvem:Best-Partitions/", similarity,
+destino = paste("nuvem:Clus/Best-Partitions/", similarity,
                "/Macro-F1/", dataset_name, "/Partitions/", sep="")
 comando1 = paste("rclone -P copy ", origem, " ", destino, sep="")
 cat("\n", comando1, "\n")
@@ -328,7 +328,7 @@ cat("\n####################################################################")
 cat("\n# COPY VALIDATION TO GOOGLE DRIVE                                  #")
 cat("\n####################################################################\n\n")
 origem = diretorios$folderResultsDataset
-destino = paste("nuvem:Best-Partitions/", similarity,
+destino = paste("nuvem:Clus/Best-Partitions/", similarity,
                "/Macro-F1/", dataset_name, "/Validation/", sep="")
 comando1 = paste("rclone -P copy ", origem, " ", destino, sep="")
 cat("\n", comando1, "\n")
